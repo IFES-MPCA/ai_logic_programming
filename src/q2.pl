@@ -29,4 +29,4 @@ solve_internal(Source, Target, T, FinalCost, Output) :-
 
 
 % Defina o ponto de entrada (1º procedimento chamado)
-solve(X, Y, T, N) :- solve_sort(X, Y, T, N).
+solve(X, Y, P, N) :- solve_sort(X, Y, P, N).
