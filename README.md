@@ -1,5 +1,9 @@
 # Trabalho de introdução à programação lógica (com Prolog)
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/37306576/176787756-85cdf512-ca30-477f-b88f-295c775992d7.png" />
+</p>
+
 Segundo trabalho apresentado à disciplina de Inteligência Artificial.
 
 - Autor: Antônio Carlos Durães da Silva
