@@ -1,9 +1,3 @@
-pway(a, b, 10).
-pway(b, c, 15).
-pway(d, c, 5).
-pway(d, b, 10).
-pway(x, y, 10).
-
 % Proc. auxiliar 1: Inverta a ordem dos elementos da lista de entrada
 list_reverse([], Y, R) :- R = Y.
 list_reverse([H | T] , Y, R) :-list_reverse(T, [H | Y], R).
