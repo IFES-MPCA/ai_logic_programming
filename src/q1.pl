@@ -92,4 +92,8 @@ antes(A, Z) :- antes_imediato(Interm, Z), antes(A, Interm).
 race([_]).
 
 % verificar se cada par de elementos respeita a ordem armazenada no banco de regras
-race([Corredor1, Corredor2 | T]) :- antes(Corredor1, Corredor2), race([Corredor2 | T]).
+race([Corredor1, Corredor2 | T]) :-
+  antes(Corredor1, Corredor2),
+  
+  % chame o procedimento novamente passando uma sublista que é a concatenação do iésimo + 1 corredor com a cauda da lista de entrada
+  race([Corredor2 | T]).
