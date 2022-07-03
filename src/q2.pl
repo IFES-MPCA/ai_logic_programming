@@ -18,7 +18,9 @@ solve_sort(Source, Target, Path, Cost) :-
     list_reverse(UnsortedPath, [], Path).
 
 
-% Ignore casos em que o ponto de origem e destino sejam o mesmo
+/* Ignore casos em que o ponto de origem e destino sejam o mesmo.
+ * Por ser o último caso, atribua o caminho temporário (T) como saída e defina o custo da relação como zero.
+ */
 solve_internal(X, X, T, 0, T).
 
 solve_internal(Source, Target, T, FinalCost, Output) :-
