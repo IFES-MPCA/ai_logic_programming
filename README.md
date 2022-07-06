@@ -15,7 +15,11 @@ As implementações foram realizadas no ambiente [SWISH](https://swish.swi-prolo
 
 ### Questão 1: Corrida
 
-Arquivo: [q1.pl](https://github.com/IFES-MPCA/prog_logica/blob/main/src/q1.pl)
+Arquivo:
+
+[q1.pl](https://github.com/IFES-MPCA/prog_logica/blob/main/src/q1.pl) (Versão em que os nomes dos corredores **NÃO** são string)
+
+[q1_string.pl](https://github.com/IFES-MPCA/prog_logica/blob/main/src/q1_string.pl) (Versão onde os nomes são string e acentuadas)
 
 Os predicados desenvolvidos foram:
 - **antes_imediato(A, B):** Verifica se existem algum fato que relacione diretamente o corredor A com o corredor B.
