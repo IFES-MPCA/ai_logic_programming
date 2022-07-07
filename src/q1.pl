@@ -71,10 +71,10 @@ antes_imediato(ursula_uliana, zaira_zaia).
 antes_imediato(miguel_moraes, ursula_uliana).
 antes_imediato(carla_correia, ursula_uliana).
 
-% A chegou antes de Z, se A chegou imediatamente antes 
-antes(A, Z) :- antes_imediato(A, Z).
+% A chegou antes de Corredor2, se Corredor1 chegou imediatamente antes 
+antes(Corredor1, Corredor2) :- antes_imediato(Corredor1, Corredor2).
 
-% Ou, se o antecessor imediato de Z possuir algum antecessor (imediato ou não) ligado a A
+% Ou, se o antecessor imediato de Corredor2 possuir algum antecessor (imediato ou não) ligado ao Corredor1
 /* Exemplo:
  * Considere a sequência de entrada sendo os predicados [(a, c), (b, c), (c, d), (d, e), (e, f)].
  * antes(a, f) deve retornar true mesmo que não haja relação direta entre "a" e "f",
@@ -86,14 +86,23 @@ antes(A, Z) :- antes_imediato(A, Z).
  * 3ª chamada | Interm = c | antes(a, d) :- antes_imediato(c, d), antes(a, c).
  * 4ª chamada | Interm = _ | antes(a, c) :- antes_imediato(a, c) -> true
  */
-antes(A, Z) :- antes_imediato(Interm, Z), antes(A, Interm).
+antes(Corredor1, Corredor2) :-
+    antes_imediato(Interm, Corredor2),
+    antes(Corredor1, Interm).
 
-% caso base para fim da lista
+/* Verifique se o primeiro corredor chegou depois do segundo */
+depois(Corredor1, Corredor2) :- antes(Corredor2, Corredor1).
+
+% Caso base para fim da iteração de pares, já que a lista só terá um elemento
 race([_]).
 
-% verificar se cada par de elementos respeita a ordem armazenada no banco de regras
+% Verificar se cada par de elementos respeita a ordem armazenada no banco de regras
 race([Corredor1, Corredor2 | T]) :-
-  antes(Corredor1, Corredor2),
+	
+    % Se o primeiro corredor chegou após o segundo, há uma contradição, interrompa o fluxo
+    \+ depois(Corredor1, Corredor2),
   
-  % chame o procedimento novamente passando uma sublista que é a concatenação do iésimo + 1 corredor com a cauda da lista de entrada
-  race([Corredor2 | T]).
+    /* Senão, chame o procedimento novamente passando uma sublista que é a concatenação
+    * do (iésimo + 1) corredor com a cauda da lista de entrada
+    */
+    race([Corredor2 | T]).
