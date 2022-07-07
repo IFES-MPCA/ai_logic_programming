@@ -98,6 +98,12 @@ race([_]).
 
 % Verificar se cada par de elementos respeita a ordem armazenada no banco de regras
 race([Corredor1, Corredor2 | T]) :-
+    
+    % Verifique se há alguma relação entre o primeiro corredor e qualquer outro
+    (antes_imediato(Corredor1, _); antes_imediato(_, Corredor1)), !,
+    
+    % Verifique se há alguma relação entre o segundo corredor e qualquer outro
+    (antes_imediato(Corredor2, _); antes_imediato(_, Corredor2)), !,
 	
     % Se o primeiro corredor chegou após o segundo, há uma contradição, interrompa o fluxo
     \+ depois(Corredor1, Corredor2),
