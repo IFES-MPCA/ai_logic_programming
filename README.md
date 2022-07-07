@@ -11,6 +11,32 @@ Segundo trabalho apresentado à disciplina de Inteligência Artificial.
 
 As implementações foram realizadas no ambiente [SWISH](https://swish.swi-prolog.org/), plataforma online para desenvolvimento Prolog.
 
+## Problemas, dúvidas e decisões de implementação
+
+### Questão 1: Corrida
+
+#### Divergência entre nomes
+
+Há alguns nomes que dão a entender que são a mesma pessoa, mas estão levemente divergentes.
+
+Este problema foi reportado, contudo não recebemos a relação de qual versão do nome deveríamos adotar. Os suspostos nomes são:
+- "Eduardo Eugêncio" e "Eduardo Eugenio" (optei por "Eduardo Eugenio")
+- "Nauvia Novais" e "Nauvia Novai" (optei por "Nauvia Novai**s**")
+- "Carla Correia" e "Carla Correa" (optei por "Carla Correia")
+- "Kaio Kiefer" e "Kaio Keifer" (optei por "Kaio Kiefer")
+
+#### Divergência de interpretação
+
+Em algumas conversas com professor (IA), foi passado que nossa resolução deveria entregar as possíveis listas que não contradigam as regras. Contudo, como na descrição da questão diz que _"defina um predicado, race(Ranking), que seja **verdadeiro** se a lista, Ranking, contiver os competidores da corrida em uma ordem de chegada que não contradiga nenhum fato"_, então interpretei que a lista seria recebida como entrada e que o predicado deveria apenas confirmar se a lista está em uma ordem aceita (coerente com os fatos). Optei por seguir a descrição.
+
+#### Ordens inconclusivas
+
+Há cenários (arranjos da lista de entrada) que não é possível relacionar um corredor com outro, uma vez que não uma ligação direita entre eles e nem intermediários que os conectem para que seja possível inferir uma ordem entre eles. Por padrão, nesse cenários inconclusivos, o retorno foi definido como **true**, uma vez que a entrada inconclusiva não contradiz nenhum fato da base.
+
+Um exemplo de ordem inconclusiva é a lista que contém Davi Dantas e Fábio Freitas:
+race([davi_dantas, fabio_freitas]).
+race([fabio_freitas, davi_dantas]).
+
 ## Questões implementadas
 
 ### Questão 1: Corrida
