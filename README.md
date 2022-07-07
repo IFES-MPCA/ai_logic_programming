@@ -50,6 +50,7 @@ Arquivo:
 Os predicados desenvolvidos foram:
 - **antes_imediato(A, B):** Verifica se existem algum fato que relacione diretamente o corredor A com o corredor B.
 - **antes(A, Z):** Verifica se o corredor A chegou antes de Z, existindo um fato que relacione diretamente A com Z **ou** fatos que indiquem que A chegou antes de um terceiro corredor e fatos que indiquem que esse terceiro corredor chegou antes de Z.
+- **depois(A, Z)**: Verifica se o corredor A chegou após Z. Usa o método `antes` como atalho.
 - **race(Ranking):** Itera sob os pares de corredores da lista de entrada e verifica se não há algum par que conflite com os fatos da base de conhecimento.
 
 ### Questão 2: Labirinto
